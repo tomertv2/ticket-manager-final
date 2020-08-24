@@ -13,12 +13,11 @@ function Ticket(props) {
                         <span className="timeSpan">Creation Time: {ticket.creationTime}</span>
                     </div>
                     {(ticket.labels) &&
-                    <span>Labels:
-                        {(ticket.labels) &&
-                        ticket.labels.map((label, i) => 
+                    <div>
+                        {ticket.labels.map((label, i) => 
                             <span className="label" key={i}>{label}</span>
                     )}
-                    </span>
+                    </div>
                     }
                 </div>
             </div>
