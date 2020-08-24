@@ -22,7 +22,7 @@ app.post('/api/tickets/:ticketId/done', async (req, res) => {
   const indexOfTicket = json.findIndex((ticket) => ticket.id === req.params.ticketId);
   json[indexOfTicket].done = true;
   await fs.writeFile('./data.json', JSON.stringify(json));
-  res.send(json);
+  res.send({ updated: true });
 });
 
 app.post('/api/tickets/:ticketId/undone', async (req, res) => {
@@ -31,7 +31,7 @@ app.post('/api/tickets/:ticketId/undone', async (req, res) => {
   const indexOfTicket = json.findIndex((ticket) => ticket.id === req.params.ticketId);
   json[indexOfTicket].done = false;
   await fs.writeFile('./data.json', JSON.stringify(json));
-  res.send(json);
+  res.send({ updated: true });
 });
 
 module.exports = app;
