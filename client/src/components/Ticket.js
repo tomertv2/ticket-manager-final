@@ -5,31 +5,21 @@ function Ticket(props) {
         <>
         {props.tickets.map((ticket, i) =>
             <div className="ticket" key={i}>
-                <div>
-                    ID: {ticket.id}
-                </div>
-                <div>
-                    Title: {ticket.title}
-                </div>
-                <div>
-                    Content: {ticket.content}
-                </div>
-                <div>
-                    User Email: {ticket.userEmail}
-                </div>
-                <div>
-                    Creation Time: {ticket.creationTime}
-                </div>
-                <div>    
-                {(ticket.labels) &&
-                <span>Labels:</span>
-                }
-                {(ticket.labels) &&
-                ticket.labels.map((label, i) => 
-                    <label className="label" key={i}>
-                        {label}
-                    </label>
-                )}
+                <div className="title">{ticket.title}</div>
+                <div className="content">{ticket.content}</div>
+                <div className="moreInfoContainer">
+                    <div>
+                        <span className="emailSpan">User Email: {ticket.userEmail}</span>
+                        <span className="timeSpan">Creation Time: {ticket.creationTime}</span>
+                    </div>
+                    {(ticket.labels) &&
+                    <span>Labels:
+                        {(ticket.labels) &&
+                        ticket.labels.map((label, i) => 
+                            <span className="label" key={i}>{label}</span>
+                    )}
+                    </span>
+                    }
                 </div>
             </div>
         )}
