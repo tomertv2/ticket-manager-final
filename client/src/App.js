@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Ticket from './components/Ticket';
 import Search from './components/Search';
+import RestoreButton from './components/RestoreButton';
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -34,15 +35,28 @@ function App() {
     })
     setTickets(updatedTicketsList);
   }
+
+  const restoreHiddenTickets = () => {
+    const updatedTicketsList = [...tickets];
+    updatedTicketsList.forEach(ticket => {
+      if(ticket.invisible === true) {
+        ticket.invisible = false;
+      }
+    })
+    setTickets(updatedTicketsList);
+  } 
   
   return (
     <main>
       <div id="topBarContainer">
         <Search filterOnChangeFunc={filterOnChange} />
-        <div>
-          <span>Counter: </span>
+        <div id="restoreContainer">
+          <span>Restore </span>
           <span id="hideTicketsCounter">{countHiddenTickets.length}</span>
+          <span> hidden tickets</span>
+          <RestoreButton restoreFunc={restoreHiddenTickets} />
         </div>
+        
       </div>
       {tickets.map(ticket =>
         <Ticket key={ticket.id} ticket={ticket} hideTicketFunc={hideTicket} />

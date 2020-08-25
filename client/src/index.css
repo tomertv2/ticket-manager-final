@@ -66,3 +66,8 @@ code {
   display: flex;
   justify-content: space-between;
 }
+
+#restoreContainer {
+  position: relative;
+  margin-top: 1rem;
+}
