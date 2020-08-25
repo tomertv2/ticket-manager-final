@@ -15,8 +15,8 @@ export default function Search(props) {
     const classes = useStyles();    
     
     return (
-        <form className={classes.root} noValidate autoComplete="off">
+        <span className={classes.root} noValidate autoComplete="off">
             <TextField id="searchInput" label="Search..." onChange={e => props.filterOnChangeFunc(e.target.value)} />
-        </form>
+        </span>
     );
 }

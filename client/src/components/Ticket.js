@@ -4,8 +4,8 @@ import HideButton from './HideButton';
 export default function Ticket(props) {
     return (
         <>
-            <div className="ticket"
-                style={{ visibility: props.ticket.invisible ? 'hidden' : 'visible' }}>
+            <div className={props.ticket.invisible ? 'hidden' : 'ticket'}
+                style={{ display: props.ticket.invisible ? 'none' : 'block' }}>
                 <div className="ticketTopContainer">
                     <span className="title">{props.ticket.title}</span>
                     <HideButton hideTicketFunc={props.hideTicketFunc} ticket={props.ticket} />

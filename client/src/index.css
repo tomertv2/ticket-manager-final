@@ -61,3 +61,8 @@ code {
 .title {
   margin: 10px;
 }
+
+#topBarContainer {
+  display: flex;
+  justify-content: space-between;
+}
