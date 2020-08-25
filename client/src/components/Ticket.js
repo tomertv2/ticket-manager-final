@@ -1,10 +1,15 @@
 import React from 'react';
+import HideButton from './HideButton';
 
-function Ticket(props) {
+export default function Ticket(props) {
     return (
         <>
-            <div className="ticket">
-                <div className="title">{props.ticket.title}</div>
+            <div className="ticket"
+                style={{ visibility: props.ticket.invisible ? 'hidden' : 'visible' }}>
+                <div className="ticketTopContainer">
+                    <span className="title">{props.ticket.title}</span>
+                    <HideButton hideTicketFunc={props.hideTicketFunc} ticket={props.ticket} />
+                </div>
                 <div className="content">{props.ticket.content}</div>
                 <div className="moreInfoContainer">
                     <div>
@@ -23,5 +28,3 @@ function Ticket(props) {
         </>
     );
 }
-
-export default Ticket;

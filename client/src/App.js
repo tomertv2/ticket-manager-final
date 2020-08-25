@@ -24,12 +24,21 @@ function App() {
     setTickets(data);
   }
 
+  const hideTicket = (ticket) => {
+    const UpdatedTicketsList = [...tickets];
+    UpdatedTicketsList.forEach(newTicket => {
+      if(newTicket.id === ticket.id) {
+        newTicket.invisible = true;
+      }
+    })
+    setTickets(UpdatedTicketsList.filter(e => !e.invisible));
+  }
+
   return (
     <main>
       <Search filterOnChangeFunc={filterOnChange} />
-      {/* <input id="searchInput" onChange={e => filterData(e.target.value)}></input> */}
       {tickets.map(ticket =>
-        <Ticket key={ticket.id} ticket={ticket} />
+        <Ticket key={ticket.id} ticket={ticket} hideTicketFunc={hideTicket} />
         )}
     </main>
   );
