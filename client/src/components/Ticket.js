@@ -2,6 +2,7 @@ import React from 'react';
 import HideButton from './HideButton';
 
 export default function Ticket(props) {
+  const date = new Date(props.ticket.creationTime);
   return (
     <>
       <div
@@ -17,11 +18,13 @@ export default function Ticket(props) {
           <div>
             <span className="emailSpan">
               User Email:
+              {' '}
               {props.ticket.userEmail}
             </span>
             <span className="timeSpan">
               Creation Time:
-              {props.ticket.creationTime}
+              {' '}
+              {date.toISOString().replace(/T/g, ' ').replace(/Z/g, '')}
             </span>
           </div>
           {(props.ticket.labels)

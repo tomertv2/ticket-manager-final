@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   justify-content: center;
+  background-color: #74a6d8;
 }
 
 code {
@@ -21,18 +22,21 @@ code {
   max-width: 50vw;
   margin: 1vh;
   border: 1px solid black;
+  border-radius: 15px;
+  box-shadow:0 0 10px 0 black;
+  background-color: white;
+  padding: 5px;
 }
 
 .ticketTopContainer {
   display: flex;
   justify-content: space-between;
-  border-left: 5px solid black;
   font-weight: bold;
   font-size: 16px;
 }
 
 .content {
-  padding: 3px;
+  padding: 5px;
   font-size: 14px;
 }
 
@@ -40,14 +44,15 @@ code {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  padding: 5px;
 }
 
 .label {
-  background-color: blueviolet;
-  border: 1px solid black;
-  border-radius: 10%;
+  background-color: #3273b3;
+  border-radius: 3px;
   color: white;
   margin: 2px;
+  padding: 5px;
 }
 
 .emailSpan {
@@ -59,7 +64,14 @@ code {
 }
 
 .title {
-  margin: 10px;
+  margin: 5px;
+  padding-top: 5px;
+}
+
+.title::before {
+  content: '';
+  border-left: 5px solid #3273b3;
+  padding-right: 5px;
 }
 
 #topBarContainer {
@@ -70,4 +82,9 @@ code {
 #restoreContainer {
   position: relative;
   margin-top: 1rem;
+}
+
+#pageTitle {
+  display: flex;
+  justify-content: center;
 }

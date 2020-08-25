@@ -48,6 +48,7 @@ function App() {
 
   return (
     <main>
+      <h1 id="pageTitle">My Tickets Manager</h1>
       <div id="topBarContainer">
         <Search filterOnChangeFunc={filterOnChange} />
         <div id="restoreContainer">
