@@ -3,25 +3,23 @@ import React from 'react';
 function Ticket(props) {
     return (
         <>
-        {props.tickets.map((ticket, i) =>
-            <div className="ticket" key={i}>
-                <div className="title">{ticket.title}</div>
-                <div className="content">{ticket.content}</div>
+            <div className="ticket">
+                <div className="title">{props.ticket.title}</div>
+                <div className="content">{props.ticket.content}</div>
                 <div className="moreInfoContainer">
                     <div>
-                        <span className="emailSpan">User Email: {ticket.userEmail}</span>
-                        <span className="timeSpan">Creation Time: {ticket.creationTime}</span>
+                        <span className="emailSpan">User Email: {props.ticket.userEmail}</span>
+                        <span className="timeSpan">Creation Time: {props.ticket.creationTime}</span>
                     </div>
-                    {(ticket.labels) &&
+                    {(props.ticket.labels) &&
                     <div>
-                        {ticket.labels.map((label, i) => 
+                        {props.ticket.labels.map((label, i) => 
                             <span className="label" key={i}>{label}</span>
                     )}
                     </div>
                     }
                 </div>
             </div>
-        )}
         </>
     );
 }
