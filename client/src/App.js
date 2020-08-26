@@ -45,12 +45,35 @@ function App() {
     setTickets(updatedTicketsList);
   };
 
+  const sortBy = (val) => {
+    const updatedTicketsList = [...tickets];
+
+    switch (val) {
+      case '1':
+        updatedTicketsList.sort((a, b) => a.creationTime - b.creationTime);
+        break;
+      case '2':
+        updatedTicketsList.sort((a, b) => b.creationTime - a.creationTime);
+        break;
+      case '3':
+        updatedTicketsList.sort((a, b) => a.userEmail.localeCompare(b.userEmail));
+        break;
+      case '4':
+        updatedTicketsList.sort((a, b) => b.userEmail.localeCompare(a.userEmail));
+        break;
+      default:
+        break;
+    }
+    setTickets(updatedTicketsList);
+  };
+
   return (
     <main>
       <NavBar
         filterOnChangeFunc={filterOnChange}
         restoreFunc={restoreHiddenTickets}
         countHiddenTickets={countHiddenTickets}
+        sortByFunc={sortBy}
       />
       {tickets.map((ticket) => (
         <Ticket

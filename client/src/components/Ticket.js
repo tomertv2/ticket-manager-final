@@ -49,12 +49,10 @@ export default function Ticket(props) {
             </Typography>
             <Typography className="ticketBottomContainer" component="span">
               <Typography className="info" variant="caption" color="textSecondary">
-                User Email:
+                User:
                 {' '}
                 {props.ticket.userEmail}
-                {' '}
-                Creation Time:
-                {' '}
+                {' | '}
                 {date.toISOString().replace(/T/g, ' ').replace(/Z/g, '')}
               </Typography>
               {(props.ticket.labels)

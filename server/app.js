@@ -11,7 +11,9 @@ app.get('/api/tickets', async (req, res) => {
   const searchParam = req.query.searchText;
   let json = JSON.parse(tickets);
   if (searchParam) {
-    json = json.filter((ticket) => ((ticket.title).toLowerCase()).includes(searchParam));
+    json = json.filter(
+      (ticket) => ((ticket.title).toLowerCase()).includes(searchParam.toLowerCase()),
+    );
   }
   res.send(json);
 });

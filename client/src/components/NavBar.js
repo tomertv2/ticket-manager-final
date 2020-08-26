@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Search from './Search';
 import RestoreButton from './RestoreButton';
+import SortButton from './SortButton';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -46,6 +47,7 @@ export default function NavBar(props) {
           <div className={classes.search}>
             <Search filterOnChangeFunc={props.filterOnChangeFunc} />
           </div>
+          <SortButton sortByFunc={props.sortByFunc} />
           <div id="restoreContainer">
             <span>Restore </span>
             <span id="hideTicketsCounter">{props.countHiddenTickets.length}</span>
