@@ -15,11 +15,14 @@ code {
     monospace;
 }
 
+main {
+  max-width: 60vw;
+}
+
 .ticket {
   display: flex;
   align-content: center;
   flex-direction: column;
-  max-width: 75vw;
   margin: 1.5vh;
 }
 
