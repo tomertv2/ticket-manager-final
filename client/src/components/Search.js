@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import InputBase from '@material-ui/core/InputBase';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,18 +15,20 @@ export default function Search(props) {
   const classes = useStyles();
 
   return (
-    <span className={classes.root} noValidate autoComplete="off">
-      <TextField
+    <span
+      className={classes.root}
+      noValidate
+      autoComplete="off"
+    >
+      <InputBase
+        placeholder="Search…"
         id="searchInput"
-        label="Search..."
-        onChange={(e) => props.filterOnChangeFunc(e.target.value)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchOutlinedIcon />
-            </InputAdornment>
-          ),
+        classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput,
         }}
+        inputProps={{ 'aria-label': 'search' }}
+        onChange={(e) => props.filterOnChangeFunc(e.target.value)}
       />
     </span>
   );

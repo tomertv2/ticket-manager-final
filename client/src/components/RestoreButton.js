@@ -16,7 +16,12 @@ export default function RestoreButton(props) {
 
   return (
     <span className={classes.root}>
-      <IconButton id="restoreHideTickets" aria-label="delete" size="small" onClick={() => props.restoreFunc()}>
+      <IconButton
+        id="restoreHideTickets"
+        aria-label="delete"
+        size="small"
+        onClick={() => props.restoreFunc()}
+      >
         <CachedIcon />
       </IconButton>
     </span>

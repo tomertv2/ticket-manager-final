@@ -19,53 +19,28 @@ code {
   display: flex;
   align-content: center;
   flex-direction: column;
-  max-width: 50vw;
-  margin: 1vh;
-  border: 1px solid black;
-  border-radius: 15px;
-  box-shadow:0 0 10px 0 black;
-  background-color: white;
-  padding: 5px;
+  max-width: 75vw;
+  margin: 1.5vh;
 }
 
 .ticketTopContainer {
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
-  font-size: 16px;
 }
 
-.content {
-  padding: 5px;
-  font-size: 14px;
-}
-
-.moreInfoContainer {
+.ticketBottomContainer {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  padding: 5px;
+  padding-top: 1em;
 }
 
 .label {
-  background-color: #3273b3;
-  border-radius: 3px;
-  color: white;
-  margin: 2px;
-  padding: 5px;
-}
-
-.emailSpan {
-  margin: 2px;
-}
-
-.timeSpan {
-  margin: 1.5rem;
+  margin: 0.25rem;
 }
 
 .title {
   margin: 5px;
-  padding-top: 5px;
+  padding-top: 1em;
 }
 
 .title::before {
@@ -74,17 +49,18 @@ code {
   padding-right: 5px;
 }
 
+.info {
+  padding-top: 0.5em;
+}
+
 #topBarContainer {
   display: flex;
   justify-content: space-between;
+  width: 50vw;
+  margin: 1.5vh;
 }
 
-#restoreContainer {
-  position: relative;
-  margin-top: 1rem;
-}
-
-#pageTitle {
+#navBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }

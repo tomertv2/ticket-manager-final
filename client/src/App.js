@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import Ticket from './components/Ticket';
-import Search from './components/Search';
-import RestoreButton from './components/RestoreButton';
+import NavBar from './components/NavBar';
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -48,17 +47,11 @@ function App() {
 
   return (
     <main>
-      <h1 id="pageTitle">My Tickets Manager</h1>
-      <div id="topBarContainer">
-        <Search filterOnChangeFunc={filterOnChange} />
-        <div id="restoreContainer">
-          <span>Restore </span>
-          <span id="hideTicketsCounter">{countHiddenTickets.length}</span>
-          <span> hidden tickets</span>
-          <RestoreButton restoreFunc={restoreHiddenTickets} />
-        </div>
-
-      </div>
+      <NavBar
+        filterOnChangeFunc={filterOnChange}
+        restoreFunc={restoreHiddenTickets}
+        countHiddenTickets={countHiddenTickets}
+      />
       {tickets.map((ticket) => (
         <Ticket
           key={ticket.id}

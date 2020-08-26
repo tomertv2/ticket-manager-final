@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,12 @@ export default function HideButton(props) {
 
   return (
     <span className={classes.root}>
-      <IconButton className="hideTicketButton " aria-label="delete" size="small" onClick={() => props.hideTicketFunc(props.ticket)}>
+      <IconButton
+        className="hideTicketButton "
+        aria-label="delete"
+        size="small"
+        onClick={() => props.hideTicketFunc(props.ticket)}
+      >
         <DeleteOutlineIcon />
       </IconButton>
     </span>
