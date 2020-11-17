@@ -3,8 +3,25 @@ import './App.css';
 import axios from 'axios';
 import Ticket from './components/Ticket';
 import NavBar from './components/NavBar';
+import SignIn from './components/SignIn';
+import firebase from 'firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+firebase.initializeApp({
+  apiKey: 'AIzaSyA8O8jsPFWMqB7k8fdApVvQu15fufs-DA4',
+  authDomain: 'tickets-manager-654b1.firebaseapp.com',
+  databaseURL: 'https://tickets-manager-654b1.firebaseio.com',
+  projectId: 'tickets-manager-654b1',
+  storageBucket: 'tickets-manager-654b1.appspot.com',
+  messagingSenderId: '707606961287',
+  appId: '1:707606961287:web:64afa7943f658f2fe02c22',
+  measurementId: 'G-J9Q08BZCGB',
+});
+
+const auth = firebase.auth();
 
 function App() {
+  const [user] = useAuthState(auth);
   const [tickets, setTickets] = useState([]);
   const countHiddenTickets = tickets.filter((ticket) => ticket.invisible);
 
@@ -56,10 +73,14 @@ function App() {
         updatedTicketsList.sort((a, b) => b.creationTime - a.creationTime);
         break;
       case '3':
-        updatedTicketsList.sort((a, b) => a.userEmail.localeCompare(b.userEmail));
+        updatedTicketsList.sort((a, b) =>
+          a.userEmail.localeCompare(b.userEmail)
+        );
         break;
       case '4':
-        updatedTicketsList.sort((a, b) => b.userEmail.localeCompare(a.userEmail));
+        updatedTicketsList.sort((a, b) =>
+          b.userEmail.localeCompare(a.userEmail)
+        );
         break;
       default:
         break;
@@ -75,13 +96,13 @@ function App() {
         countHiddenTickets={countHiddenTickets}
         sortByFunc={sortBy}
       />
-      {tickets.map((ticket) => (
-        <Ticket
-          key={ticket.id}
-          ticket={ticket}
-          hideTicketFunc={hideTicket}
-        />
-      ))}
+      {user ? (
+        tickets.map((ticket) => (
+          <Ticket key={ticket.id} ticket={ticket} hideTicketFunc={hideTicket} />
+        ))
+      ) : (
+        <SignIn auth={auth} firebase={firebase} />
+      )}
     </main>
   );
 }
