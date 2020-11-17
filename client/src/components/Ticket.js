@@ -29,7 +29,6 @@ export default function Ticket(props) {
   const classes = useStyles();
 
   return (
-    <>
       <div
         className={props.ticket.invisible ? 'hidden' : 'ticket'}
         style={{ display: props.ticket.invisible ? 'none' : 'block' }}
@@ -74,6 +73,5 @@ export default function Ticket(props) {
           </CardContent>
         </Card>
       </div>
-    </>
   );
 }
