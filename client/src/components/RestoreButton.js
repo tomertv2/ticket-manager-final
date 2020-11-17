@@ -11,16 +11,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RestoreButton(props) {
+export default function RestoreButton({ restoreFunc }) {
   const classes = useStyles();
 
   return (
     <span className={classes.root}>
       <IconButton
-        id="restoreHideTickets"
-        aria-label="delete"
-        size="small"
-        onClick={() => props.restoreFunc()}
+        id='restoreHideTickets'
+        aria-label='delete'
+        size='small'
+        onClick={() => restoreFunc()}
       >
         <CachedIcon />
       </IconButton>

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search(props) {
+export default function Search({ filterOnChangeFunc }) {
   const classes = useStyles();
 
   return (
@@ -47,14 +47,14 @@ export default function Search(props) {
         <SearchIcon />
       </div>
       <InputBase
-        placeholder="Search…"
-        id="searchInput"
+        placeholder='Search…'
+        id='searchInput'
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
         inputProps={{ 'aria-label': 'search' }}
-        onChange={(e) => props.filterOnChangeFunc(e.target.value)}
+        onChange={(e) => filterOnChangeFunc(e.target.value)}
       />
     </div>
   );

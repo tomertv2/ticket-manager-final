@@ -11,29 +11,41 @@ app.get('/api/tickets', async (req, res) => {
   const searchParam = req.query.searchText;
   let json = JSON.parse(tickets);
   if (searchParam) {
-    json = json.filter(
-      (ticket) => ((ticket.title).toLowerCase()).includes(searchParam.toLowerCase()),
+    json = json.filter((ticket) =>
+      ticket.title.toLowerCase().includes(searchParam.toLowerCase())
     );
   }
   res.send(json);
 });
 
 app.post('/api/tickets/:ticketId/done', async (req, res) => {
-  const tickets = await fs.readFile('./data.json');
-  const json = JSON.parse(tickets);
-  const indexOfTicket = json.findIndex((ticket) => ticket.id === req.params.ticketId);
-  json[indexOfTicket].done = true;
-  await fs.writeFile('./data.json', JSON.stringify(json));
-  res.send({ updated: true });
+  try {
+    const ticketJsonString = await fs.readFile('./data.json');
+    const tickets = JSON.parse(ticketJsonString);
+    const indexOfTicket = tickets.findIndex(
+      (ticket) => ticket.id === req.params.ticketId
+    );
+    tickets[indexOfTicket].done = true;
+    await fs.writeFile('./data.json', JSON.stringify(tickets));
+    res.send({ updated: true });
+  } catch (error) {
+    console.error('Error occurred');
+  }
 });
 
 app.post('/api/tickets/:ticketId/undone', async (req, res) => {
-  const tickets = await fs.readFile('./data.json');
-  const json = JSON.parse(tickets);
-  const indexOfTicket = json.findIndex((ticket) => ticket.id === req.params.ticketId);
-  json[indexOfTicket].done = false;
-  await fs.writeFile('./data.json', JSON.stringify(json));
-  res.send({ updated: true });
+  try {
+    const ticketJsonString = await fs.readFile('./data.json');
+    const tickets = JSON.parse(ticketJsonString);
+    const indexOfTicket = tickets.findIndex(
+      (ticket) => ticket.id === req.params.ticketId
+    );
+    tickets[indexOfTicket].done = false;
+    await fs.writeFile('./data.json', JSON.stringify(tickets));
+    res.send({ updated: true });
+  } catch (error) {
+    console.error('Error occurred');
+  }
 });
 
 module.exports = app;

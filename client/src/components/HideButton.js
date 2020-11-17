@@ -11,16 +11,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HideButton(props) {
+export default function HideButton({ hideTicketFunc, ticket }) {
   const classes = useStyles();
 
   return (
     <span className={classes.root}>
       <IconButton
-        className="hideTicketButton "
-        aria-label="delete"
-        size="small"
-        onClick={() => props.hideTicketFunc(props.ticket)}
+        className='hideTicketButton '
+        aria-label='delete'
+        size='small'
+        onClick={() => hideTicketFunc(ticket)}
       >
         <DeleteOutlineIcon />
       </IconButton>

@@ -34,25 +34,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar(props) {
+export default function NavBar({
+  filterOnChangeFunc,
+  sortByFunc,
+  countHiddenTickets,
+  restoreFunc,
+}) {
   const classes = useStyles();
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar id="navBar">
-          <Typography className={classes.title} variant="h6" noWrap>
+      <AppBar position='static'>
+        <Toolbar id='navBar'>
+          <Typography className={classes.title} variant='h6' noWrap>
             My Tickets Manager
           </Typography>
           <div className={classes.search}>
-            <Search filterOnChangeFunc={props.filterOnChangeFunc} />
+            <Search filterOnChangeFunc={filterOnChangeFunc} />
           </div>
-          <SortButton sortByFunc={props.sortByFunc} />
-          <div id="restoreContainer">
+          <SortButton sortByFunc={sortByFunc} />
+          <div id='restoreContainer'>
             <span>Restore </span>
-            <span id="hideTicketsCounter">{props.countHiddenTickets.length}</span>
+            <span id='hideTicketsCounter'>{countHiddenTickets.length}</span>
             <span> hidden tickets</span>
-            <RestoreButton restoreFunc={props.restoreFunc} />
+            <RestoreButton restoreFunc={restoreFunc} />
           </div>
         </Toolbar>
       </AppBar>
